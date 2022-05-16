@@ -45,7 +45,7 @@
 //7
 //-1
 
-
+//This approach is solve by right traversal
 package Stack_and_Queue;
 
 import java.io.*;

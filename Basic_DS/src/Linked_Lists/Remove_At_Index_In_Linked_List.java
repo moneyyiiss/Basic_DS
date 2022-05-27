@@ -19,7 +19,7 @@ public class Remove_At_Index_In_Linked_List {
       temp.data = val;
       temp.next = null;
 
-      if (size == 0) {
+      if (size == 0) { 
         head = tail = temp;
       } else {
         tail.next = temp;

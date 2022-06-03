@@ -3,7 +3,7 @@ package Linked_Lists;
 import java.io.*;
 import java.util.*;
 
-public class Reverse_A_Linked_List {
+public class Remove_Last_In_Linked_List_7 {
   public static class Node {
     int data;
     Node next;
@@ -13,7 +13,6 @@ public class Reverse_A_Linked_List {
     Node head;
     Node tail;
     int size;
-    
 
     void addLast(int val) {
       Node temp = new Node();
@@ -92,27 +91,27 @@ public class Reverse_A_Linked_List {
       temp.data = val;
       temp.next = head;
       head = temp;
-
-      if (size == 0) {
+      
+      if(size == 0){
         tail = temp;
       }
 
       size++;
     }
 
-    public void addAt(int idx, int val) {
-      if (idx < 0 || idx > size) {
+    public void addAt(int idx, int val){
+      if(idx < 0 || idx > size){
         System.out.println("Invalid arguments");
-      } else if (idx == 0) {
+      } else if(idx == 0){
         addFirst(val);
-      } else if (idx == size) {
+      } else if(idx == size){
         addLast(val);
       } else {
         Node node = new Node();
         node.data = val;
 
         Node temp = head;
-        for (int i = 0; i < idx - 1; i++) {
+        for(int i = 0; i < idx - 1; i++){
           temp = temp.next;
         }
         node.next = temp.next;
@@ -122,65 +121,20 @@ public class Reverse_A_Linked_List {
       }
     }
 
-    public void removeLast() {
-      if (size == 0) {
-        System.out.println("List is empty");
-      } else if (size == 1) {
-        head = tail = null;
-        size = 0;
-      } else {
-        Node temp = head;
-        for (int i = 0; i < size - 2; i++) {
-          temp = temp.next;
-        }
-
-        tail = temp;
-        tail.next = null;
-        size--;
-      }
-    }
-
-    public void removeAt(int idx) {
-      if (idx < 0 || idx >= size) {
-        System.out.println("Invalid arguments");
-      } else if (idx == 0) {
-        removeFirst();
-      } else if (idx == size - 1) {
-        removeLast();
-      } else {
-        Node temp = head;
-        for (int i = 0; i < idx - 1; i++) {
-          temp = temp.next;
-        }
-
-        temp.next = temp.next.next;
-        size--;
-      }
-    }
-    
-    private Node getNodeAt(int idx) {
-    	Node temp = head;
-    	for(int i=0; i<idx; i++) {
-    		temp = temp.next;
-    	}
-    	return temp;
-    }
-    
-    public void reverseDI() {
+    public void removeLast(){
       // write your code here
-    	int li = 0;
-    	int ri = size - 1;
-    	
-    	while(li < ri) {
-    		Node left = getNodeAt(li);
-    		Node right = getNodeAt(ri);
-    		
-    		int temp = left.data;
-    		left.data = right.data;
-    		right.data = temp;
-    		
-    		li++;
-    		ri--;
+    	if(size == 0) {
+    		System.out.println("List is empty");
+    	}else if(size == 1) {
+    		head = tail = null;
+    	}else {
+    		Node temp = head;
+    		for(int i=0; i<size-2;i++) {
+    			temp = temp.next;
+    		}
+    		tail = temp;
+    		temp.next = null;
+    		size--;
     	}
     }
   }
@@ -225,12 +179,7 @@ public class Reverse_A_Linked_List {
         list.addAt(idx, val);
       } else if (str.startsWith("removeLast")) {
         list.removeLast();
-      } else if (str.startsWith("removeAt")) {
-        int idx = Integer.parseInt(str.split(" ")[1]);
-        list.removeAt(idx);
-      } else if(str.startsWith("reverseDI")){
-        list.reverseDI();
-      }
+      } 
       str = br.readLine();
     }
   }

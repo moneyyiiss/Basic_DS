@@ -1,10 +1,9 @@
 package Linked_Lists;
 
-
 import java.io.*;
 import java.util.*;
 
-public class Add_First_In_Linked_List {
+public class Add_At_Index_In_Linked_List_6 {
   public static class Node {
     int data;
     Node next;
@@ -88,17 +87,41 @@ public class Add_First_In_Linked_List {
     }
 
     public void addFirst(int val) {
-      // write your code here
       Node temp = new Node();
       temp.data = val;
       temp.next = head;
       head = temp;
+      
       if(size == 0){
         tail = temp;
-        
       }
+
       size++;
     }
+
+    public void addAt(int idx, int val){
+      // write your code here
+      if(idx<0 || idx > size){
+        System.out.println("Invalid arguments");
+      }else if(idx == 0){
+        addFirst(val);
+      }else if(idx == size) {
+    	addLast(val);
+      }else {
+    	  Node node = new Node();
+    	  node.data = val;
+    	  
+    	  //
+    	  Node temp = head; 
+    	  for(int i=0; i<idx -1; i++) {
+    		  temp = temp.next;
+    	  }
+    	  node.next = temp.next;
+    	  temp.next = node;
+    	  
+    	  size++;
+      }
+      }
   }
 
   public static void main(String[] args) throws Exception {
@@ -135,7 +158,11 @@ public class Add_First_In_Linked_List {
       } else if (str.startsWith("addFirst")) {
         int val = Integer.parseInt(str.split(" ")[1]);
         list.addFirst(val);
-      }
+      } else if (str.startsWith("addAt")) {
+        int idx = Integer.parseInt(str.split(" ")[1]);
+        int val = Integer.parseInt(str.split(" ")[2]);
+        list.addAt(idx, val);
+      } 
       str = br.readLine();
     }
   }

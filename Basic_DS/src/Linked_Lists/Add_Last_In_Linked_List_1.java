@@ -3,7 +3,7 @@ package Linked_Lists;
 import java.io.*;
 import java.util.*;
 
-public class Add_Last_In_Linked_List {
+public class Add_Last_In_Linked_List_1 {
   public static class Node {
     int data;
     Node next;
@@ -16,11 +16,12 @@ public class Add_Last_In_Linked_List {
 
     void addLast(int val) {
       // Write your code here
+    	//temp = current address
     	Node temp = new Node();
     	temp.data = val;
-    	temp.next = null;
-    	if(size == 0) {
-    		head = tail = temp;
+		temp.next = null;
+    	if(size==0) {
+    		tail = head = temp;
     	}else {
     		tail.next = temp;
     		tail = temp;

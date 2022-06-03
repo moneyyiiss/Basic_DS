@@ -1,10 +1,9 @@
 package Linked_Lists;
 
-
 import java.io.*;
 import java.util.*;
 
-public class Display_A_Linkedlist {
+public class Remove_First_In_Linkedlist_3 {
   public static class Node {
     int data;
     Node next;
@@ -31,18 +30,28 @@ public class Display_A_Linkedlist {
     }
 
     public int size(){
-      // write code here
       return size;
     }
 
     public void display(){
-      // write code here
-      Node temp = head;
-      while(temp != null){
-        System.out.print(temp.data+ " ");
-        temp = temp.next;
+      for(Node temp = head; temp != null; temp = temp.next){
+        System.out.print(temp.data + " ");
       }
       System.out.println();
+    }
+
+    public void removeFirst(){
+      // write your code here
+      if(size == 0){
+        System.out.println("List is empty");
+      }else if(size == 1){
+        head = tail = null;
+        size = 0;
+      }else{
+        head = head.next;
+        size--;
+      }
+      
     }
   }
 
@@ -59,6 +68,8 @@ public class Display_A_Linkedlist {
         System.out.println(list.size());
       } else if(str.startsWith("display")){
         list.display();
+      } else if(str.startsWith("removeFirst")){
+        list.removeFirst();
       }
       str = br.readLine();
     }
